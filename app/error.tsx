@@ -7,8 +7,7 @@ type Props = {
 
 const Error = ({error, reset}: Props) => {
     return <div>
-        <h2>Error occured</h2>
-        <p>{error.message}</p>
+        <p>Could not fetch the list of notes. {error.message}</p>
         <button onClick={reset}>Reset</button>
     </div>
 }

@@ -9,6 +9,14 @@ interface FetchNotesParams {
     searchValue: string,
     page: number
 }
+interface FetchNoteDetails {
+    id: string,
+    title: string,
+    content: string,
+    createdAt: string,
+    updatedAt: string,
+    tag: string
+}
 
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -23,6 +31,13 @@ export const fetchNotes = async ({searchValue, page}: FetchNotesParams): Promise
     if(page) searchParams.page = page.toString()
     const query = new URLSearchParams(searchParams)
 const res = await api.get<FetchNotesResponse>(`/notes?${query}`);
+return res.data
+}
+
+export const fetchNoteById = async ({ id }: {id: string}) => {
+
+const res = await api.get<FetchNoteDetails>(`/notes/${id}`)
+
 return res.data
 }
 

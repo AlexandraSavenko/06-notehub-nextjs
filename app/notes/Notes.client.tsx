@@ -19,7 +19,7 @@ const queryParams = {
   searchValue,
   page
 }
-  const {data, isFetching} = useQuery({
+  const {data, isFetching, error} = useQuery({
     queryKey: ['notes', searchValue, page],
     queryFn: () => fetchNotes(queryParams),
     placeholderData: keepPreviousData
@@ -28,6 +28,10 @@ const notes = data?.notes ?? []
 const totalPages = data?.totalPages ?? 1
 const openModal = () => setIsModalOpen(true);
 const closeModal = () => setIsModalOpen(false)
+
+if(error){
+    return <p style={{textAlign: 'center'}}>Could not fetch the list of notes. {error.message}</p>
+}
     return <div className={css.app}>
 	<header className={css.toolbar}>
 		<SearchBox onChange={setSearchQuery}/>
