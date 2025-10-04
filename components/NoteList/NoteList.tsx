@@ -5,9 +5,8 @@ import { deleteNote } from "@/lib/api";
 import Link from "next/link";
 interface NoteListProps {
   notes?: Note[];
-  loading: boolean;
 }
-const NoteList: React.FC<NoteListProps> = ({ notes, loading }) => {
+const NoteList: React.FC<NoteListProps> = ({ notes }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: deleteNote,
@@ -22,6 +21,7 @@ const NoteList: React.FC<NoteListProps> = ({ notes, loading }) => {
   const handleDelete = (noteId: string) => {
     mutation.mutate(noteId)
   }
+
   return (
     <>
       {notes && (
