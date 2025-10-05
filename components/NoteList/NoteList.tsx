@@ -65,4 +65,3 @@ export default NoteList;
 // });
 
 
-// ok, the problem is I've reversed the last commit but versel didn't register that, the commit is still there for versel even if I rebuild the project
