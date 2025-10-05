@@ -5,9 +5,8 @@ import { deleteNote } from "@/lib/api";
 import Link from "next/link";
 interface NoteListProps {
   notes?: Note[];
-  loading: boolean;
 }
-const NoteList: React.FC<NoteListProps> = ({ notes, loading }) => {
+const NoteList: React.FC<NoteListProps> = ({ notes }) => {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: deleteNote,
@@ -64,3 +63,6 @@ export default NoteList;
 //     queryClient.invalidateQueries({ queryKey: ["notes"] });
 //   },
 // });
+
+
+// ok, the problem is I've reversed the last commit but versel didn't register that, the commit is still there for versel even if I rebuild the project

@@ -1,5 +1,5 @@
 const Loading = () => {
-    return <p>Loading, please wait...</p>
+    return <p style={{ textAlign: "center" }}>Loading, please wait...</p>
 
 }
 
